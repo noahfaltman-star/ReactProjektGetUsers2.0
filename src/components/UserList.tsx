@@ -8,13 +8,18 @@ type UserListProps = {
 
 const UserList = ({ users, category }: UserListProps) => {
 	if (!users || users.length === 0) {
-		return <p>Inga användare hittades.</p>
+		return (
+			<div className="rounded-xl border border-dashed border-zinc-800 p-16 text-center font-mono text-xs text-zinc-500">
+				INGA ANVÄNDARE FUNNA
+			</div>
+		)
 	}
 
 	return (
-		<div>
-			{users.map((user) => (
-				<UserCard key={user.id} user={user} category={category} />
+		<div className="grid grid-cols-1 gap-px border border-zinc-800 bg-zinc-800/80 sm:grid-cols-2 lg:grid-cols-3">
+			{/* index är För att kunna skriva ut radnummer som № 01 */}
+			{users.map((user, idx) => (
+				<UserCard key={user.id} user={user} category={category} index={idx + 1} />
 			))}
 		</div>
 	)

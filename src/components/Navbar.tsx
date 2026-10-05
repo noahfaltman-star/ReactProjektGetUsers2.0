@@ -9,13 +9,17 @@ const NavBar = () => {
 	]
 
 	return (
-		<nav>
-			{links.map((link) => {
+		<nav className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900/60 p-1">
+			{links.map(link => {
 				const Icon = link.icon
 
 				return (
-					<Link key={link.to} to={link.to}>
-						<Icon size={16} />
+					<Link
+						key={link.to}
+						to={link.to}
+						className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-mono text-xs tracking-wider uppercase text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-zinc-100"
+					>
+						<Icon size={13} className="text-zinc-500" />
 						<span>{link.label}</span>
 					</Link>
 				)
