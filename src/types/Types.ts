@@ -1,22 +1,19 @@
+export type CategoryType = "profile" | "address" | "settings"
 
-export type User = {
+export interface User {
 	id: number
+	username: string
+	roles: string[]
+	settings: {
+		theme: string
+	}
 	profile: {
-        address: {
-            street: string
+		name: string
+		email: string
+		address: {
+			street: string
 			city: string
 			zipCode: string
 		}
-		email: string
-		name: string
 	}
-	roles: []
-	settings: {
-        notifications: {
-            email: boolean
-			push: boolean
-		}
-		theme: string
-	}
-    username: string
 }

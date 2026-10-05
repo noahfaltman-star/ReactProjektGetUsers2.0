@@ -1,11 +1,15 @@
-import { AtSign, Mail, MapPin, Sparkles, Shield } from "lucide-react"
-import type { User } from "../types/Types"
+import { AtSign } from "lucide-react"
+import type { User, CategoryType } from "../types/Types"
+import UserProfileView from "./views/UserProfileView"
+import UserAddressView from "./views/UserAddressView"
+import UserSettingsView from "./views/UserSettingsView"
 
 type UserCardProps = {
 	user: User
+	category?: CategoryType
 }
 
-const UserCard = ({ user }: UserCardProps) => {
+const UserCard = ({ user, category = "profile" }: UserCardProps) => {
 	return (
 		<article>
 			<header>
@@ -19,33 +23,9 @@ const UserCard = ({ user }: UserCardProps) => {
 			</header>
 
 			<div>
-				<Mail size={14} />
-				<a href={user.profile.email}>{user.profile.email}</a>
-			</div>
-
-			<div>
-				<MapPin size={14} />
-				<p>{user.profile.address.street}</p>
-				<p>
-					{user.profile.address.zipCode}{" "}
-					{user.profile.address.city}
-				</p>
-			</div>
-
-			<div>
-				<div>
-					<Sparkles size={14} />
-					<span>Tema: {user.settings.theme}</span>
-				</div>
-				<div>
-					<Shield size={14} />
-					<span>Roller:</span>
-					<ul>
-						{user.roles.map(role => (
-							<li key={role}>{role}</li>
-						))}
-					</ul>
-				</div>
+				{category === "address" && <UserAddressView user={user} />}
+				{category === "settings" && <UserSettingsView user={user} />}
+				{category === "profile" && <UserProfileView user={user} />}
 			</div>
 		</article>
 	)

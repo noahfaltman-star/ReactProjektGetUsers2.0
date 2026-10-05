@@ -1,11 +1,12 @@
 import UserCard from "./UserCard"
-import type { User} from "../types/Types"
+import type { User, CategoryType } from "../types/Types"
 
 type UserListProps = {
 	users: User[]
+	category?: CategoryType
 }
 
-const UserList = ({ users}: UserListProps) => {
+const UserList = ({ users, category }: UserListProps) => {
 	if (!users || users.length === 0) {
 		return <p>Inga användare hittades.</p>
 	}
@@ -13,7 +14,7 @@ const UserList = ({ users}: UserListProps) => {
 	return (
 		<div>
 			{users.map((user) => (
-				<UserCard key={user.id} user={user} />
+				<UserCard key={user.id} user={user} category={category} />
 			))}
 		</div>
 	)

@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query"
 import { fetchUsers } from "../api/FetchUsers"
-
+import type { CategoryType } from "../types/Types"
 import UserList from "./UserList"
 
-const Users = () => {
+type UsersProps = {
+	category?: CategoryType
+}
+
+const Users = ({ category }: UsersProps) => {
 	const {
 		data: users,
 		isLoading,
@@ -22,11 +26,7 @@ const Users = () => {
 		return <p>Ett fel uppstod: {error.message}</p>
 	}
 
-	return (
-		<>
-			<UserList users={users} />
-		</>
-	)
+	return <>{users && <UserList users={users} category={category} />}</>
 }
 
 export default Users
