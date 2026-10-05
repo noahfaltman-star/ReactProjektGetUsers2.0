@@ -1,4 +1,3 @@
-export type CategoryType = "profile" | "address" | "settings"
 
 export type User = {
 	id: number
