@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import Navbar from "./components/Navbar"
+import NavBar from "./components/Navbar"
 import HomePage from "./pages/HomePage"
 
 function App() {
@@ -7,12 +7,13 @@ function App() {
 		<div>
 			<header>
 				<h1>Personalöversikt</h1>
-				<Navbar />
+				<NavBar />
 			</header>
 
 			<main>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
+					<Route path="/:category" element={<HomePage />} />
 				</Routes>
 			</main>
 		</div>
