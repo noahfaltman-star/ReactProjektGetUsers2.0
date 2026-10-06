@@ -17,7 +17,7 @@ const Users = ({ category }: UsersProps) => {
 	} = useQuery({
 		queryKey: ["UserData"],
 		queryFn: fetchUsers,
-		staleTime: 300000,
+		staleTime: 900000, //15 min
 	})
 
 	// Visas under tiden som anropet pågår
@@ -41,7 +41,7 @@ const Users = ({ category }: UsersProps) => {
 			</div>
 		)
 	}
-	
+
 	// Renderar listan när data framgångsrikt har hämtats
 	return <>{users && <UserList users={users} category={category} />}</>
 }
