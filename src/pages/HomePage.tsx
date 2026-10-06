@@ -3,6 +3,7 @@ import type { CategoryType } from "../types/Types"
 import Users from "../components/Users"
 
 const HomePage = () => {
+	// Läser av ':category' från webbläsarens adressfält (faller tillbaka på 'profile' om tomt)
 	const { category = "profile" } = useParams<{ category: CategoryType }>()
 
 	return (

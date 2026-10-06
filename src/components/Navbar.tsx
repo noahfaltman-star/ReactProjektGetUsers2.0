@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { User, MapPin, Sliders } from "lucide-react"
 
 const NavBar = () => {
+	// Konfiguration av navigationslänkar med ikon och mål-URL
 	const links = [
 		{ to: "/profile", label: "Profil", icon: User },
 		{ to: "/address", label: "Adress", icon: MapPin },
@@ -10,6 +11,7 @@ const NavBar = () => {
 
 	return (
 		<nav className="inline-flex items-center gap-1 rounded-full border border-zinc-800 bg-zinc-900/60 p-1">
+			{/* Renderar en länk per konfigurationsobjekt */}
 			{links.map(link => {
 				const Icon = link.icon
 

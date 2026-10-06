@@ -4,7 +4,7 @@ import type { User } from "../../types/Types"
 type UserSettingsViewProps = {
 	user: User
 }
-
+// Visar användarinställningar: valt färgtema och en lista med taggar för användarens roller
 const UserSettingsView = ({ user }: UserSettingsViewProps) => {
 	return (
 		<div className="space-y-3">
@@ -24,7 +24,7 @@ const UserSettingsView = ({ user }: UserSettingsViewProps) => {
 					<span>Behörigheter</span>
 				</div>
 				<div className="flex flex-wrap gap-1 pl-5">
-					{user.roles.map((role) => (
+					{user.roles.map(role => (
 						<span
 							key={role}
 							className="rounded border border-zinc-800/80 bg-zinc-900/60 px-1.5 py-0.5 text-[10px] text-zinc-400"

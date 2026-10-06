@@ -4,7 +4,7 @@ import type { User } from "../../types/Types"
 type UserAddressViewProps = {
 	user: User
 }
-
+// Visar adressinformation formaterad i två rader med platsikon
 const UserAddressView = ({ user }: UserAddressViewProps) => {
 	return (
 		<div className="space-y-1.5">

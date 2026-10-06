@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# Personalöversikt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En modern medarbetarkatalog och personalsystem med en mörk brutalistisk editorial-estetik inspirerad av Awwwards. Applikationen hanterar asynkron datainläsning, sektionsbaserad routing och modulära användarvyer.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠 Teknisk Stack
 
-## React Compiler
+* **Ramverk & Byggverktyg:** [React](https://react.dev/) + [Vite](https://vitejs.dev/) + [TypeScript](https://www.typescriptlang.org/)[cite: 2]
+* **Server State & Cachning:** [TanStack Query](https://tanstack.com/query/latest)[cite: 2, 17]
+* **Routing:** [React Router](https://reactrouter.com/) (`BrowserRouter`, `Routes`, `Route`, `useParams`)[cite: 2, 3, 18]
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/) (mörkt brutalistiskt tema med `zinc`-palett)[cite: 14, 15, 18]
+* **Ikoner:** [Lucide React](https://lucide.dev/) (`Mail`, `MapPin`, `Sparkles`, `Shield`, `AtSign`, `Sliders`, `Loader2`, `AlertCircle`)[cite: 11, 12, 13, 14, 15, 17]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Huvudfunktioner
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Dynamisk vyväxling via URL:** Routingen stöder direkta kategorilänkar (`/profile`, `/address`, `/settings`) via `useParams`[cite: 3, 14, 18].
+* **Villkorlig rendering i kort:** `UserCard` anpassar visat innehåll (`UserProfileView`, `UserAddressView`, `UserSettingsView`) utifrån vald kategori[cite: 15].
+* **Asynkron datahantering:** Automatisk hantering av laddningstillstånd och nätverksfel via TanStack Query med en cachetid (staleTime) på 5 minuter[cite: 17].
+* **Editorial UI-design:** Minimalistisk kolsvart bakgrund (`#080808`), pulsande statusindikator, monospaced mikrotypografi samt rutnätsstruktur med tunna separationslinjer[cite: 15, 16, 18].
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Projektstruktur
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+```text
+src/
+├── api/
+│   └── FetchUsers.ts              # API-anrop och hämtningslogik
+├── components/
+│   ├── views/
+│   │   ├── UserAddressView.tsx    # Addressvy (gatuadress, postnummer, ort)
+│   │   ├── UserProfileView.tsx    # Profilvy (e-postlänk)
+│   │   └── UserSettingsView.tsx   # Inställningsvy (tema, behörigheter)
+│   ├── Navbar.tsx                 # Kapselformad navigeringslist med Link
+│   ├── UserCard.tsx               # Användarkort med dynamisk vy och index
+│   ├── UserList.tsx               # Rutnätsvisning (grid) av alla användarkort
+│   └── Users.tsx                  # Datawrapper som kör useQuery
+├── pages/
+│   └── HomePage.tsx               # Huvudsida som läser av :category parametern
+├── types/
+│   └── Types.ts                   # Typdefinitioner (User, CategoryType)
+├── App.tsx                        # Rotlayout med header och rutter
+├── index.css                      # Globala stilar och Tailwind-direktiv
+└── main.tsx                       # Applikationens startpunkt och Providers

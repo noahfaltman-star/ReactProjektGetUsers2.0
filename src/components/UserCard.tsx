@@ -12,10 +12,12 @@ type UserCardProps = {
 
 const UserCard = ({ user, category = "profile", index = 1 }: UserCardProps) => {
 	return (
-		<article className="group relative flex min-h-[220px] flex-col justify-between bg-[#0e0e0e] p-6 transition-colors duration-300 hover:bg-[#141414]">
+		<article className="group relative flex min-h-55 flex-col justify-between bg-[#0e0e0e] p-6 transition-colors duration-300 hover:bg-[#141414]">
+			{/* Grundläggande användarinformation som alltid syns */}
 			<div>
 				<header className="flex items-start justify-between border-b border-zinc-800/60 pb-5">
 					<div className="space-y-1">
+						{/* Indexnummer formaterat till två siffror (t.ex. '№ 01') */}
 						<span className="font-mono text-[10px] tracking-wider text-zinc-600">
 							№ {String(index).padStart(2, "0")}
 						</span>
@@ -34,6 +36,7 @@ const UserCard = ({ user, category = "profile", index = 1 }: UserCardProps) => {
 				</header>
 
 				{/* Vyer */}
+				{/* Villkorlig rendering: visar endast vyn som matchar vald kategori */}
 				<div className="pt-5 font-mono text-xs text-zinc-400">
 					{category === "address" && <UserAddressView user={user} />}
 					{category === "settings" && <UserSettingsView user={user} />}

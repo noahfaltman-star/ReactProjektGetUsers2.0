@@ -4,7 +4,7 @@ import type { User } from "../../types/Types"
 type UserProfileViewProps = {
 	user: User
 }
-
+// Visar e-postadress med klickbar 'mailto:'-länk och hover-effekt
 const UserProfileView = ({ user }: UserProfileViewProps) => {
 	return (
 		<div className="flex items-center gap-2.5">

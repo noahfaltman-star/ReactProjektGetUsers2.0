@@ -9,6 +9,7 @@ type UsersProps = {
 }
 
 const Users = ({ category }: UsersProps) => {
+	// Hämtar användardata via TanStack Query med 5 minuters cachetid
 	const {
 		data: users,
 		isLoading,
@@ -19,6 +20,7 @@ const Users = ({ category }: UsersProps) => {
 		staleTime: 300000,
 	})
 
+	// Visas under tiden som anropet pågår
 	if (isLoading) {
 		return (
 			<div className="flex flex-col items-center justify-center gap-3 py-24 text-zinc-500">
@@ -30,6 +32,7 @@ const Users = ({ category }: UsersProps) => {
 		)
 	}
 
+	// Visas om fetch-anropet misslyckas
 	if (error) {
 		return (
 			<div className="flex items-center gap-3 rounded-lg border border-red-950/60 bg-red-950/20 p-5 font-mono text-xs text-red-400">
@@ -38,7 +41,8 @@ const Users = ({ category }: UsersProps) => {
 			</div>
 		)
 	}
-
+	
+	// Renderar listan när data framgångsrikt har hämtats
 	return <>{users && <UserList users={users} category={category} />}</>
 }
 
