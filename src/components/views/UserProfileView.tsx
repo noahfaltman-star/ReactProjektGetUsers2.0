@@ -7,9 +7,14 @@ type UserProfileViewProps = {
 
 const UserProfileView = ({ user }: UserProfileViewProps) => {
 	return (
-		<div>
-			<Mail size={14} />
-			<a href={`mailto:${user.profile.email}`}>{user.profile.email}</a>
+		<div className="flex items-center gap-2.5">
+			<Mail size={13} className="text-zinc-500" />
+			<a
+				href={`mailto:${user.profile.email}`}
+				className="truncate text-zinc-300 transition-colors hover:text-white hover:underline"
+			>
+				{user.profile.email}
+			</a>
 		</div>
 	)
 }
