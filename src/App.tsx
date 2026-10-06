@@ -24,7 +24,9 @@ function App() {
 
 			<main className="mx-auto max-w-7xl px-6 py-10 lg:px-12 lg:py-16">
 				<Routes>
+					{/* Rotadressen renderar HomePage med förvald vy */}
 					<Route path="/" element={<HomePage />} />
+					{/* Fångar upp dynamiska kategorier som /profile, /address eller /settings */}
 					<Route path="/:category" element={<HomePage />} />
 				</Routes>
 			</main>
